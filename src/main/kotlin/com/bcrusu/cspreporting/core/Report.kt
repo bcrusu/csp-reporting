@@ -1,4 +1,5 @@
 package com.bcrusu.cspreporting.core
 
-// TODO:
-data class Report(val documentUri: String)
+import com.fasterxml.jackson.annotation.JsonProperty
+
+data class Report(@JsonProperty("csp-report") val body: ReportBody)

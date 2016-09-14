@@ -1,5 +1,10 @@
 package com.bcrusu.cspreporting
 
-fun main(args: Array<String>) {
-    App().run(*args)
+class Main {
+    companion object {
+        @JvmStatic
+        fun main(args: Array<String>) {
+            App().run(*args)
+        }
+    }
 }
