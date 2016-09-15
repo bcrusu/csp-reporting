@@ -8,11 +8,11 @@ class LogReportWriter(val level: String) : IReportWriter {
 
     override fun write(report: Report) {
         //TODO
-        _logger.info(report.toString())
+        //_logger.info(report.toString())
     }
 
     override fun writeFiltered(report: Report, reason: String) {
         //TODO
-        _logger.info(report.toString() + " " + reason)
+        //_logger.info(report.toString() + " " + reason)
     }
 }

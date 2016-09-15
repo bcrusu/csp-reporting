@@ -1,5 +1,6 @@
 package com.bcrusu.cspreporting
 
+import com.bcrusu.cspreporting.dwext.CspJacksonMessageBodyProvider
 import com.bcrusu.cspreporting.health.ConfigHealthCheck
 import com.bcrusu.cspreporting.resources.ReportResource
 import io.dropwizard.Application
@@ -16,6 +17,9 @@ class App : Application<AppConfiguration>() {
     }
 
     override fun run(config: AppConfiguration, env: Environment) {
+        // register the CSP report MIME type
+        env.jersey().register(CspJacksonMessageBodyProvider(env.objectMapper))
+
         registerHealthChecks(env)
         registerResources(env)
     }

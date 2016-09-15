@@ -5,8 +5,10 @@ import com.bcrusu.cspreporting.core.filters.IReportFilter
 import com.bcrusu.cspreporting.core.filters.ReportFilterFactory
 import com.bcrusu.cspreporting.core.writers.IReportWriter
 import com.bcrusu.cspreporting.core.writers.LogReportWriter
+import org.slf4j.LoggerFactory
 
 class ReportingEngine {
+    private val _logger = LoggerFactory.getLogger(ReportingEngine::class.java)
     private val _reportProcessor: ReportProcessor
     private val _reportFilter: IReportFilter
     private val _reportWriter: IReportWriter
