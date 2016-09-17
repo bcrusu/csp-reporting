@@ -3,8 +3,8 @@ package com.bcrusu.cspreporting.core
 import com.bcrusu.cspreporting.api.RawReport
 import com.bcrusu.cspreporting.core.filters.IReportFilter
 import com.bcrusu.cspreporting.core.filters.ReportFilterFactory
+import com.bcrusu.cspreporting.core.writers.ElasticsearchReportWriter
 import com.bcrusu.cspreporting.core.writers.IReportWriter
-import com.bcrusu.cspreporting.core.writers.LogReportWriter
 import org.slf4j.LoggerFactory
 
 class ReportingEngine {
@@ -16,15 +16,15 @@ class ReportingEngine {
     init {
         _reportProcessor = ReportProcessor()
         _reportFilter = ReportFilterFactory.build()
-        _reportWriter = LogReportWriter("INFO")
+        _reportWriter = ElasticsearchReportWriter("INFO")
     }
 
-    fun report(rawReport: RawReport) {
-        val report = _reportProcessor.process(rawReport)
+    fun report(rawReport: RawReport, userAgent: String) {
+        val report = _reportProcessor.process(rawReport, userAgent)
 
         val isFiltered = _reportFilter.filter(report)
         if (isFiltered)
-            _reportWriter.writeFiltered(report, "filtered")
+            _reportWriter.writeFiltered(report)
         else
             _reportWriter.write(report)
     }

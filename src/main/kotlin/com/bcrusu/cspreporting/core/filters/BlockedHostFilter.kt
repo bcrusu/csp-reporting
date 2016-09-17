@@ -2,10 +2,11 @@ package com.bcrusu.cspreporting.core.filters
 
 import com.bcrusu.cspreporting.core.Report
 
-class DocumentHostFilter : IReportFilter {
+class BlockedHostFilter : IReportFilter {
     override fun filter(report: Report): Boolean {
-        return when {
-            report.documentHost.contains("localhost", true) -> true
+        return when (report.blockedHost) {
+            "localhost" -> true
+            "127.0.0.1" -> true
             else -> false
         }
     }
