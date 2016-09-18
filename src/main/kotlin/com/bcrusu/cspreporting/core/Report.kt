@@ -1,23 +1,25 @@
 package com.bcrusu.cspreporting.core
 
+import com.fasterxml.jackson.annotation.JsonProperty
+
 class Report(
-        val documentUri: String,
-        val documentHost: String,
-        val documentPath: String,
+        @JsonProperty("documentUri") val documentUri: String,
+        @JsonProperty("documentHost") val documentHost: String,
+        @JsonProperty("documentPath") val documentPath: String,
 
-        val blockedUri: String,
-        val blockedHost: String,
+        @JsonProperty("blockedUri") val blockedUri: String,
+        @JsonProperty("blockedHost") val blockedHost: String,
 
-        val effectiveDirective: String?,
-        val originalPolicy: String?,
-        val referrer: String?,
-        val statusCode: Int?,
-        val violatedDirective: String,
+        @JsonProperty("effectiveDirective") val effectiveDirective: String?,
+        @JsonProperty("originalPolicy") val originalPolicy: String?,
+        @JsonProperty("referrer") val referrer: String?,
+        @JsonProperty("statusCode") val statusCode: Int?,
+        @JsonProperty("violatedDirective") val violatedDirective: String,
 
-        val sourceFile: String?,
-        val lineNumber: Int?,
-        val columnNumber: Int?,
-        val scriptSample: String?,
+        @JsonProperty("sourceFile") val sourceFile: String?,
+        @JsonProperty("lineNumber") val lineNumber: Int?,
+        @JsonProperty("columnNumber") val columnNumber: Int?,
+        @JsonProperty("scriptSample") val scriptSample: String?,
 
-        val userAgent: String) {
+        @JsonProperty("userAgent") val userAgent: String) {
 }

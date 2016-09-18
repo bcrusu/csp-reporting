@@ -6,8 +6,14 @@ import javax.validation.constraints.NotNull
 
 class ElasticsearchConfiguration() {
     @JsonProperty @field:NotEmpty
-    var address: String? = null
+    val address: String? = null
 
     @JsonProperty @field:NotNull
-    var port: Int? = null
+    val port: Int? = null
+
+    @JsonProperty
+    val clusterName: String? = null
+
+    @JsonProperty @field:NotEmpty
+    val index: String? = null
 }

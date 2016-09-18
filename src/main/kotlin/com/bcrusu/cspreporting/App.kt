@@ -2,8 +2,8 @@ package com.bcrusu.cspreporting
 
 import com.bcrusu.cspreporting.dwext.CspJacksonMessageBodyProvider
 import com.bcrusu.cspreporting.health.ConfigHealthCheck
+import com.bcrusu.cspreporting.health.ElasticsearchHealthCheck
 import com.bcrusu.cspreporting.resources.ReportResource
-import com.google.inject.Guice
 import com.google.inject.Injector
 import io.dropwizard.Application
 import io.dropwizard.setup.Bootstrap
@@ -34,5 +34,6 @@ class App : Application<AppConfiguration>() {
 
     private fun registerHealthChecks(env: Environment, injector: Injector) {
         env.healthChecks().register("config", injector.getInstance(ConfigHealthCheck::class.java))
+        env.healthChecks().register("elasticsearch", injector.getInstance(ElasticsearchHealthCheck::class.java))
     }
 }
