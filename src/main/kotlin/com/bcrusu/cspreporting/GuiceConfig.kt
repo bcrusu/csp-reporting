@@ -16,7 +16,7 @@ object GuiceConfig {
     fun createInjector(config: AppConfiguration): Injector {
         return Guice.createInjector(object : AbstractModule() {
             override fun configure() {
-                bind(ElasticsearchConfiguration::class.java).to(config.elasticsearch)
+                bind(ElasticsearchConfiguration::class.java).toInstance(config.elasticsearch)
                 bind(IReportWriter::class.java).to(ElasticsearchReportWriter::class.java)
                 bind(IReportFilter::class.java).toProvider(ReportFilterProvider::class.java)
 
